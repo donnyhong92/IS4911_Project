@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>#{msgs.titleSoftware}</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<h:outputText id = "heading" value = "#{msgs[problemReport.heading]}"></h:outputText>
+		<table>
+			<tr style="width: 716px;">
+				<td align="right" style="width: 500px;"><h:outputFormat
+						value="#{msgs.number}" /> <br> </br> <h:outputFormat
+						value="#{msgs.dateofissue}" /></td>
+						
+				<td><h:inputText label="Need a Number" id="number"
+						value="#{problemReport.number}">
+						<f:convertNumber integerOnly="true" />
+						<f:validateRequired />
+						
+					</h:inputText> <br>  </br>  <h:inputText label ="Need a Date of Issue" id="dateofissue"
+						value="#{problemReport.dateofissue}">
+						<f:convertDateTime pattern="d MMM. yyyy" />
+						<f:validateRequired />
+						
+					</h:inputText></td>
+					<td>
+					<h:message for="number" style = "color:#FF0000" /> <br/>
+					<h:message for="dateofissue" style = "color:#FF0000" />
+					</td>
+			</tr> 
+		</table>
+
+		<table>
+			<tr>
+				<td><h:outputFormat value="#{msgs.project}" />
+				</td>
+				<td width="400"><h:inputText id="projectname" label = " Need a project name"
+						value="#{problemReport.project.name}" style="width: 99%;">
+						<f:validateRequired />						
+					</h:inputText>
+					<h:message for="projectname" style = "color:#FF0000" />
+				</td>
+
+				<td><h:outputFormat value="#{msgs.originator}" />
+				</td>
+				<td><h:inputText id="orginator" label="Need a orginator"
+						value="#{problemReport.originator}" style=" width : 169px;">
+						<f:validateRequired />						
+					</h:inputText>
+					<h:message for="orginator" style = "color:#FF0000" />
+				</td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><h:outputFormat value="Title" />
+				</td>
+				<td><h:inputText id="title" label ="Need a Heading" value="#{problemReport.title}"
+						style=" width : 478px;">
+						<f:validateRequired />
+						
+					</h:inputText>
+					<h:message for="title" style = "color: #FF0000" />
+				</td>
+			</tr>
+			<tr>
+				<td><h:outputFormat value="#{msgs.modulesaffected}" />
+				</td>
+				<td><h:inputText id = "ModulesAffected" label="Modules Affected Needed"
+						value="#{problemReport.modulesaffected}" style=" width : 478px;">
+						<f:validateRequired />
+					</h:inputText></td>
+					<h:message for = "ModulesAffected" style = "color:#FF0000"/>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td><h:outputFormat value="#{msgs.description}" /> <br> </br>
+
+					<h:inputTextarea id = "description" label="Need a description"
+						value="#{problemReport.description}" cols="92" rows="10">
+						<f:validateRequired />
+					</h:inputTextarea> <br> </br></td>
+					<h:message for = "description" style = "color:#FF0000"/>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+
+				<td><h:outputFormat value="#{msgs.inscope}" />
+				<h:selectBooleanCheckbox value="#{problemReport.inScope}" >
+				<f:ajax event="change" render="heading" />
+				</h:selectBooleanCheckbox></td>
+
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><h:outputFormat value="#{msgs.recommendedsolution}" /> <br>
+				</br> <h:inputTextarea id ="recommended" label="Need a recommended solutions"
+						value="#{problemReport.recommendedsolution}" cols="92" rows="10">
+						<f:validateRequired />
+					</h:inputTextarea> <br></br></td>
+					<h:message for = "recommended" style = "color:#FF0000" />
+
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><h:outputFormat value="#{msgs.priority}" />
+				</td>
+				<td><h:selectOneMenu value="#{problemReport.priorities}">
+						<f:selectItems value="#{problemReport.toppriorities}">
+
+						</f:selectItems>
+					</h:selectOneMenu></td>
+
+				<td><h:outputFormat value="#{msgs.severity}" />
+				</td>
+				<td><h:selectOneMenu value="#{problemReport.severity}">
+						<f:selectItems value="#{problemReport.topseverities}">
+
+						</f:selectItems>
+					</h:selectOneMenu></td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><h:outputFormat value="#{msgs.dateassigned}" />
+				</td>
+				<td><h:inputText label="Date Assigned Needed" id="dateAssigned"
+						value="#{problemReport.dateassigned}" style=" width : 195px;">
+						<f:convertDateTime pattern="d MMM. yyyy" />
+						<f:validateRequired />
+						
+					</h:inputText></td>
+					<h:message for="dateAssigned" style = "color:#FF0000" />
+
+				<td><h:outputFormat value="#{msgs.datefixed}" />
+				</td>
+				<td><h:inputText label="Date Fixed Needed" id="datefixed"
+						value="#{problemReport.datefixed}" style=" width : 166px;">
+						<f:convertDateTime type = "Date" pattern="d MMM. yyyy" />
+						<f:validateRequired />
+						
+					</h:inputText></td>
+					<h:message for="datefixed" style = "color:#FF0000" />
+			</tr>
+		</table>
+
+		<p>
+			<h:commandButton value="#{msgs.submit}" action="submit" />
+		</p>
+
+	</h:form>
+</h:body>
+</html>

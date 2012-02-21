@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>#{msgs.titleSoftware}</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+	<h:outputText value = "#{msg[problemReport.heading]}"></h:outputText>
+		<table>
+			<tr style=" width : 716px;">
+				<td align= "right" style=" width : 500px;">
+				<h:outputFormat value="#{msgs.number}"/> <br> </br> 
+				<h:outputFormat value="#{msgs.dateofissue}" /> 
+				
+				</td> 
+			
+				<td> 
+				<h:inputText value="#{problemReport.number}" readonly = "true" /> <br> </br>
+				<h:inputText value="#{problemReport.dateofissue}"  readonly = "true" >
+				<f:convertDateTime pattern="d MMM. yyyy" />
+				</h:inputText>
+				</td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><h:outputFormat value="#{msgs.project}" /></td>
+				<td width ="400" ><h:inputText value="#{problemReport.project.name}" 
+						style="width: 99%;" readonly = "true"  /></td>
+
+				<td><h:outputFormat value="#{msgs.originator}" /></td>
+				<td><h:inputText value="#{problemReport.originator}" style=" width : 169px;" readonly = "true"  /></td>
+			</tr>
+		</table>
+		
+		<table>	
+			<tr>
+				<td><h:outputFormat value="title" /></td>
+				<td><h:inputText value="#{problemReport.title}" style=" width : 478px;" readonly = "true" /></td>
+			</tr>
+			<tr>
+				<td><h:outputFormat value="#{msgs.modulesaffected}" /></td>
+				<td><h:inputText value="#{problemReport.modulesaffected}" style=" width : 478px;" readonly = "true" /></td>
+			</tr>
+		</table>
+		
+		<table>
+			<tr>
+				<td>
+				<h:outputFormat value="#{msgs.description}" />   <br> </br>
+				<h:inputTextarea value="#{problemReport.description}" cols="92" rows="10" readonly = "true" />  <br> </br>
+				
+				</td> 
+			</tr>
+		</table>			
+		
+		<table>
+			<tr>
+						
+				<td>
+				<h:outputFormat value = "#{msgs.inscope}"/>
+				<h:selectBooleanCheckbox value = "#{problemReport.inScope}"/>			
+				</td>
+						
+			</tr>		
+		</table>	
+			
+		<table>
+			<tr>				
+				<td>				  
+				<h:outputFormat value="#{msgs.recommendedsolution}" /> <br> </br>
+				<h:inputTextarea value="#{problemReport.recommendedsolution}" cols="92" rows="10" readonly = "true" /> <br></br>
+				</td>
+				
+			</tr>
+		</table>
+		
+		<table>	
+			<tr>
+				<td><h:outputFormat value="#{msgs.priority}" /></td>
+				<td>
+				<h:inputText value="#{problemReport.priorities}" readonly = "true"  style=" width : 166px;"/>				
+
+ 			</td>
+	
+				<td><h:outputFormat value="#{msgs.severity}" /></td>
+				<td>
+				<h:inputText value="#{problemReport.severity}" readonly = "true"  style=" width : 166px;"/>	
+ 			</td>
+			</tr>
+		</table>
+		
+		<table>	
+			<tr>
+				<td><h:outputFormat value="#{msgs.dateassigned}" /></td>
+				<td><h:inputText value="#{problemReport.dateassigned}" readonly = "true"  style=" width : 195px;">
+				<f:convertDateTime pattern="d MMM. yyyy" />
+				</h:inputText></td>
+
+				<td><h:outputFormat value="#{msgs.datefixed}" /></td>
+				<td><h:inputText value="#{problemReport.datefixed}" readonly = "true"  style=" width : 166px;">
+				<f:convertDateTime pattern="d MMM. yyyy" />
+				</h:inputText></td>
+			</tr>
+		</table>
+		
+		<p>
+		<h:commandButton value="#{msgs.moreproblems}" action="enterProblem"/>	
+		</p>
+
+	</h:form>
+</h:body>
+</html>
